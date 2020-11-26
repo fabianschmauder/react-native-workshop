@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
-import {  Text, View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import {loadAlbums} from './src/service/album-service'
-
+import {AlbumListItem} from "./src/components/AlbumListItem";
 
 export default function App() {
   const [albums, setAlbums] = useState([]);
@@ -14,9 +14,7 @@ export default function App() {
   return (
     <ScrollView>
       <StatusBar style="auto" hidden />
-      {albums.map(album => <View key={album.id}>
-        <Text>{album.title}</Text>
-      </View>)}
+      {albums.map(album => <AlbumListItem key={album.id} album={album}/>)}
     </ScrollView>
   );
 }
