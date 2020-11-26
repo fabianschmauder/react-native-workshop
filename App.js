@@ -13,8 +13,7 @@ export default function App() {
                 <Tab.Screen name="Albums" component={AlbumsScreen} />
                 <Tab.Screen name="Todos" component={TodoScreen} />
             </Tab.Navigator>
-    </NavigationContainer>
-    );
+    </NavigationContainer>);
 }
 
 
