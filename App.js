@@ -1,12 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {loadAlbums} from './src/service/album-service'
+
 
 export default function App() {
+  const [albums, setAlbums] = useState([]);
+
+  useEffect(() => {
+    loadAlbums().then(setAlbums)
+  },[])
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" hidden />
+      {albums.map(album => <View key={album.id}>
+        <Text>{album.title}</Text>
+      </View>)}
     </View>
   );
 }
